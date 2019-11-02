@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "parcel build src/index.html && cp static/* dist/",
     "start": "parcel serve src/index.html"
   },
   "dependencies": {
