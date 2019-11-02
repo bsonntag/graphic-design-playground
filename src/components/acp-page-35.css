@@ -5,9 +5,12 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: min-content repeat(4, auto);
-  grid-column-gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    'image'
+    'content'
+    'aside';
 
   & > main {
     display: contents;
@@ -18,11 +21,8 @@
   }
 }
 
-.title,
-.lead,
-.gallery,
-.description {
-  grid-column: 1 / -1;
+.content {
+  grid-area: content;
 }
 
 .title {
@@ -39,8 +39,9 @@
 
 .gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  grid-gap: 0.5rem;
   width: 100%;
   padding: 2rem 0;
 
@@ -52,44 +53,84 @@
 }
 
 .description {
-  columns: 3;
   margin: 0;
 }
 
 .mainImage {
-  grid-column: 1;
-  grid-row: 1;
-
+  grid-area: image;
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
 .aside {
-  grid-column: 2;
-  grid-row: 1;
-
-  display: flex;
-  flex-direction: column;
+  grid-area: aside;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: min-content auto;
+  grid-gap: 1rem;
+  align-items: center;
   border: 1px solid var(--border-color);
   padding: 1rem;
+  margin-top: 2rem;
+}
 
-  & > h2,
-  & > p {
-    margin: 0;
+.asideImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.asideText {
+  margin: 0;
+}
+
+.asideTitle {
+  composes: asideText;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@media (min-width: 500px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
   }
 
-  & > h2 {
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
+  .aside {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (min-width: 600px) {
+  .description {
+    columns: 2;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 700px) {
+  .description {
+    columns: 3;
+  }
+}
+
+@media (min-width: 920px) {
+  .page {
+    grid-column-gap: 1rem;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: min-content auto;
+    grid-template-areas:
+      'image   aside'
+      'content content';
   }
 
-  & > img {
-    order: -1;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 1rem;
+  .aside {
+    align-items: initial;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    margin-top: 0;
   }
 }

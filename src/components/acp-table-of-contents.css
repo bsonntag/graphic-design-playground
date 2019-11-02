@@ -1,37 +1,20 @@
 .grid {
+  font-size: 0.75rem;
   display: grid;
-  grid-column-gap: 1rem;
-  grid-row-gap: 2px;
-  grid-template-columns: repeat(3, 10rem);
-  grid-auto-rows: 10rem;
-  grid-auto-flow: dense;
+  grid-gap: 1em;
+  grid-template-columns: 10em 10em;
+  grid-auto-rows: 10em;
   align-items: end;
   justify-content: center;
 }
 
 .row {
   display: contents;
-
-  &:nth-child(odd) {
-    & > .text {
-      grid-column: 3;
-    }
-
-    & > .page {
-      grid-column: 1;
-      text-align: right;
-    }
-  }
-
-  &:nth-child(even) {
-    & > .text {
-      text-align: right;
-    }
-  }
 }
 
 .text {
   grid-column: 1;
+  align-self: start;
 
   & > h1,
   & > p {
@@ -40,14 +23,27 @@
 
   & > h1 {
     font-family: serif;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.5em;
+    line-height: 2em;
   }
 
   & > p {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.page {
+  grid-column: 1;
+  justify-self: end;
+  font-family: serif;
+  font-size: 3em;
+
+  & > span {
+    font-family: sans-serif;
+    font-size: 0.4em;
+    text-transform: uppercase;
   }
 }
 
@@ -56,35 +52,87 @@
   background-color: hsl(0, 0%, 60%);
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .imageLarge {
   composes: image;
-  grid-column-end: span 2;
+}
 
-  & + .page {
-    margin-bottom: 0.5rem;
-    margin-right: 0.5rem;
+@media (min-width: 460px) {
+  .grid {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 660px) {
+  .row {
+    &:nth-child(even) {
+      & > .text,
+      & > .page {
+        grid-column: 2;
+      }
+
+      & > .image {
+        grid-column: 1;
+      }
+    }
+  }
+}
+
+@media (min-width: 660px) {
+  .grid {
+    grid-row-gap: 2px;
+    grid-template-columns: repeat(3, 10em);
+  }
+
+  .row {
+    &:nth-child(odd) {
+      & > .text {
+        grid-column: 3;
+      }
+    }
+
+    &:nth-child(even) {
+      & > .page {
+        grid-column: 3;
+      }
+
+      & > .page:not(.pageSmall) {
+        justify-self: start;
+      }
+    }
+  }
+
+  .text {
+    align-self: end;
+  }
+
+  .page {
+    font-size: 4em;
+
+    & > span {
+      font-family: sans-serif;
+      font-size: 0.4em;
+      text-transform: uppercase;
+    }
+  }
+
+  .pageSmall {
+    composes: page;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
 
     &,
     & > span {
       color: white;
       font-family: sans-serif;
-      font-size: 1.5rem;
-      text-align: right;
+      font-size: 1.5em;
       text-transform: uppercase;
     }
   }
-}
 
-.page {
-  grid-column: 3;
-  font-family: serif;
-  font-size: 4rem;
-
-  & > span {
-    font-family: sans-serif;
-    font-size: 0.4em;
-    text-transform: uppercase;
+  .imageLarge {
+    grid-column-end: span 2;
   }
 }

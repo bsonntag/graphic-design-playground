@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  columns: 400px;
+  columns: 350px;
   column-rule: 1px solid #444;
   gap: 2rem;
 }
@@ -36,4 +36,18 @@
 
 .band {
   font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .authorBio {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .authorImage {
+    align-self: center;
+    float: none;
+    margin-bottom: 1rem;
+    margin-left: 0;
+  }
 }

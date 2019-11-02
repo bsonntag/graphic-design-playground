@@ -28,11 +28,15 @@ const items = new Array(11).fill(null).map((value, index) => {
 export function LoudPage12() {
   return (
     <main className={classNames('container', styles.wrapper)}>
-      <div>
+      <div className={styles.authorBio}>
         <img
           className={styles.authorImage}
           alt=''
-          src={faker.image.people(200, 300)}
+          src={faker.image.imageUrl(
+            200,
+            300,
+            faker.random.arrayElement(['fashion', 'people'])
+          )}
           height={300}
           width={200}
         />

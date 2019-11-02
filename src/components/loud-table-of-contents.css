@@ -1,21 +1,20 @@
 .wrapper {
+  min-height: calc(100vh - 101px);
   display: grid;
-  grid-template-columns: 400px;
+  place-content: center;
+  grid-template-columns: minmax(auto, 400px);
   grid-template-rows:
     [first-start]
-    5fr
+    150px
     [second-start]
-    1fr
+    30px
     [first-end]
-    5fr
+    150px
     [third-start]
-    1fr
+    30px
     [second-end]
-    10fr
+    300px
     [third-end];
-
-  justify-content: center;
-  height: calc(100vh - 100px);
 }
 
 .title {
@@ -48,7 +47,7 @@
   composes: title;
 
   & > span {
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 1em;
   }
 }
@@ -57,21 +56,22 @@
   grid-column: 1;
   overflow: hidden;
   position: relative;
+  width: 100%;
 
   &:nth-of-type(1) {
     grid-row: first;
-    clip-path: polygon(0 0, 100% 0, 100% 84%, 0 94%);
+    clip-path: polygon(0 0, 100% 0, 100% 150px, 0 170px);
   }
 
   &:nth-of-type(2) {
     grid-row: second;
-    clip-path: polygon(0px 14%, 100% 5%, 100% 100%, 0px 90%);
+    clip-path: polygon(0 30px, 100% 10px, 100% 100%, 0 190px);
     z-index: 1;
   }
 
   &:nth-of-type(3) {
     grid-row: third;
-    clip-path: polygon(0px 6%, 100% 12%, 100% 100%, 0px 100%);
+    clip-path: polygon(0 20px, 100% 40px, 100% 100%, 0 100%);
   }
 
   & > img {
@@ -96,5 +96,14 @@
       transparent 30%,
       transparent
     );
+  }
+}
+
+@media (min-width: 400px) {
+  .largeTitle {
+    & > span {
+      font-size: 4rem;
+      line-height: 1em;
+    }
   }
 }

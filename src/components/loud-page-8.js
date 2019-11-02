@@ -9,9 +9,13 @@ export function LoudPage8() {
       <img
         className={styles.coverImage}
         alt=''
-        src={faker.image.fashion(1200, 600)}
-        height={1200}
-        width={600}
+        src={faker.image.imageUrl(
+          1200,
+          600,
+          faker.random.arrayElement(['animals', 'city', 'nature', 'nightlife'])
+        )}
+        height={600}
+        width={1200}
       />
 
       <div className={classNames('container', styles.content)}>

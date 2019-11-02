@@ -27,7 +27,7 @@ export function AcpTableOfContents() {
     <ul className={classNames('container', styles.grid)}>
       {items.map((item, index) => (
         <li key={index} className={styles.row}>
-          <div className={styles.text}>
+          <div className={styles.text} style={{ gridRow: index + 1 }}>
             <h1>{item.title}</h1>
             <p>{item.description}</p>
           </div>
@@ -35,11 +35,11 @@ export function AcpTableOfContents() {
             className={item.isImageLarge ? styles.imageLarge : styles.image}
             alt=''
             src={item.image}
-            style={item.isImageLarge ? { gridRow: index + 1 } : null}
+            style={{ gridRow: index + 1 }}
           />
           <div
-            className={styles.page}
-            style={item.isImageLarge ? { gridRow: index + 1 } : null}
+            className={item.isImageLarge ? styles.pageSmall : styles.page}
+            style={{ gridRow: index + 1 }}
           >
             <span aria-label='page'>p </span>
             {item.page}

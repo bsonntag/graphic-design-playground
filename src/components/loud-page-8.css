@@ -1,16 +1,18 @@
 .wrapper {
+  background-color: hsl(0, 0%, 80%);
+  min-height: calc(100vh - 101px);
   display: grid;
   grid-template-columns: 1fr minmax(auto, 1000px) 1fr;
   grid-template-areas:
     "image image   ."
     ".     content .";
-  background-color: hsl(0, 0%, 80%);
 }
 
 .coverImage {
   grid-area: image;
   display: block;
   height: auto;
+  min-height: 8rem;
   max-height: 60vh;
   width: 100%;
   object-fit: cover;
