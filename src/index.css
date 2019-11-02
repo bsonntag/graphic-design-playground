@@ -1,0 +1,25 @@
+@import 'normalize.css';
+
+:global .container {
+  padding: 2rem;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

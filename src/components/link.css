@@ -1,0 +1,25 @@
+.link {
+  display: inline-grid;
+  grid-template-areas:
+    'content'
+    'underline';
+  color: black;
+  outline: none;
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    grid-area: underline;
+    height: 1px;
+    background: black;
+    transform: scaleX(0);
+    transition: transform 250ms ease;
+  }
+
+  &:focus,
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+}

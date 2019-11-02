@@ -1,0 +1,49 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid black;
+}
+
+.navLink {
+  grid-column-gap: 1ch;
+  color: black;
+  outline: none;
+  text-decoration: none;
+
+  &::after {
+    grid-area: caret;
+    display: block;
+    transition: transform 250ms ease;
+  }
+
+  &:first-child {
+    grid-template-areas:
+      'caret content'
+      '.     underline';
+
+    &::after {
+      content: '<';
+    }
+  }
+
+  &:last-child {
+    grid-template-areas:
+      'content   caret'
+      'underline .';
+
+    &::after {
+      content: '>';
+    }
+  }
+
+  &:focus,
+  &:hover {
+    &:first-child::after {
+      transform: translateX(-0.5rem);
+    }
+
+    &:last-child::after {
+      transform: translateX(0.5rem);
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 1000px) 1fr;
+  grid-template-areas:
+    "image image   ."
+    ".     content .";
+  background-color: hsl(0, 0%, 80%);
+}
+
+.coverImage {
+  grid-area: image;
+  display: block;
+  height: auto;
+  max-height: 60vh;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  clip-path: polygon(0 0, 96% 0, 98% 95%, 0 100%);
+}
+
+.title {
+  position: absolute;
+  top: -4rem;
+  right: 2rem;
+  left: 2rem;
+  margin: 0;
+  color: white;
+  font-size: 5rem;
+  line-height: 6rem;
+  text-transform: uppercase;
+}
+
+.content {
+  grid-area: content;
+  columns: 300px;
+  gap: 2rem;
+  position: relative;
+}
+
+.intro {
+  column-span: 2;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.paragraph {
+  margin: 0;
+}
+
+.quote {
+  column-span: 2;
+  break-inside: avoid;
+  display: block;
+  padding: 2rem;
+  font-style: italic;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: '"';
+  }
+}

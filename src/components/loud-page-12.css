@@ -1,0 +1,39 @@
+.wrapper {
+  position: relative;
+  columns: 400px;
+  column-rule: 1px solid #444;
+  gap: 2rem;
+}
+
+.image {
+  break-inside: avoid;
+  float: right;
+  margin-left: 0.5rem;
+  background-color: hsl(0, 0%, 75%);
+}
+
+.authorImage {
+  composes: image;
+  --shape: polygon(0 0, 96% 8%, 90% 92%, 20% 100%);
+  clip-path: var(--shape);
+  shape-outside: var(--shape);
+}
+
+.authorDescription {
+  margin-bottom: 4rem;
+}
+
+.review {
+  clear: both;
+  margin-bottom: 2rem;
+}
+
+.reviewTitle {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.band {
+  font-size: 1.5rem;
+}

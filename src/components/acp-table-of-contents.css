@@ -1,0 +1,90 @@
+.grid {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 2px;
+  grid-template-columns: repeat(3, 10rem);
+  grid-auto-rows: 10rem;
+  grid-auto-flow: dense;
+  align-items: end;
+  justify-content: center;
+}
+
+.row {
+  display: contents;
+
+  &:nth-child(odd) {
+    & > .text {
+      grid-column: 3;
+    }
+
+    & > .page {
+      grid-column: 1;
+      text-align: right;
+    }
+  }
+
+  &:nth-child(even) {
+    & > .text {
+      text-align: right;
+    }
+  }
+}
+
+.text {
+  grid-column: 1;
+
+  & > h1,
+  & > p {
+    margin: 0;
+  }
+
+  & > h1 {
+    font-family: serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  & > p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.image {
+  grid-column: 2;
+  background-color: hsl(0, 0%, 60%);
+  height: 100%;
+  width: 100%;
+}
+
+.imageLarge {
+  composes: image;
+  grid-column-end: span 2;
+
+  & + .page {
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+
+    &,
+    & > span {
+      color: white;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      text-align: right;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.page {
+  grid-column: 3;
+  font-family: serif;
+  font-size: 4rem;
+
+  & > span {
+    font-family: sans-serif;
+    font-size: 0.4em;
+    text-transform: uppercase;
+  }
+}
