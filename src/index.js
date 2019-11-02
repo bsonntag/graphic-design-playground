@@ -13,6 +13,13 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path='/'>
+          <main className='container'>
+            <h1>Welcome</h1>
+            <Link to='/1'>Let&apos;s get started</Link>
+          </main>
+        </Route>
+
         <Route path='/1'>
           <AcpTableOfContents />
           <Navigation />
@@ -34,10 +41,10 @@ function App() {
           <Navigation />
         </Route>
 
-        <div className='container'>
+        <main className='container'>
           <h1>That&apos;s all, folks!</h1>
           <Link to='/1'>Go back to the beginning</Link>
-        </div>
+        </main>
       </Switch>
     </Router>
   );
